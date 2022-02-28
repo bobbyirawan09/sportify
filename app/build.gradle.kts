@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -15,6 +17,9 @@ android {
         versionName = ConfigData.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "SPOTIFY_CLIENT_ID", getLocalPropertiesValue("SPOTIFY_CLIENT_ID"))
+        buildConfigField("String", "SPOTIFY_CLIENT_SECRET", getLocalPropertiesValue("SPOTIFY_CLIENT_SECRET"))
     }
 
     buildTypes {
@@ -49,4 +54,8 @@ dependencies {
     testImplementation(Dependencies.junit)
     androidTestImplementation(Dependencies.extJunit)
     androidTestImplementation(Dependencies.espresso)
+}
+
+fun getLocalPropertiesValue(propertyName: String): String {
+    return gradleLocalProperties(rootDir).getProperty(propertyName)
 }
