@@ -1,4 +1,4 @@
-package bobby.base
+package bobby.sportify
 
 import org.junit.Test
 
