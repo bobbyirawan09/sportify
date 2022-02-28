@@ -1,4 +1,4 @@
-package bobby.base
+package bobby.sportify
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
